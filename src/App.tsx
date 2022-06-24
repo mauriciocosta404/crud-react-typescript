@@ -5,16 +5,24 @@ import GlobalStyle from './styles/GlobaStyle';
 import * as C from './styles/styled';
 
 function App() {
-const [users,setUsers]=useState<User[]>([]);
-const [id,setId]=useState<number>(0);
-const [email,setEmail]=useState<string>("");
-const [nome,setNome]=useState<string>("");
+  const [users,setUsers]=useState<User[]>([]);
+  const [id,setId]=useState<number>(0);
+  const [email,setEmail]=useState<string>("");
+  const [nome,setNome]=useState<string>("");
 
-const addUser=():void=>{
-  setId(id+1);
-  const newUser={id:id,nome:nome,email:email};
-  setUsers([...users,newUser]);
-}
+  const addUser=():void=>{
+    setId(id+1);
+    const newUser={id:id,nome:nome,email:email};
+    setUsers([...users,newUser]);
+  }
+
+  const deleteItem=(id:number):void=>{
+    setUsers(users.filter((user)=>user.id!==id));
+  }
+  const upDateItem=(id:number):void=>{
+    users[id].nome=nome;
+    users[id].email=email;
+  }
 
   return (
     <div>
@@ -26,7 +34,14 @@ const addUser=():void=>{
         <C.AddButton onClick={addUser}>add</C.AddButton>
         <table>
           <tr><th>nome</th><th>email</th><th>acção</th></tr>
-          {users && users.map((user,id)=>(<UserList key={id} user={user}/>))}
+          {users.map((user,id)=>
+            (<UserList 
+              key={id} 
+              upDateItem={upDateItem}
+              setNome={setNome} 
+              setEmail={setEmail} 
+              deleteItem={deleteItem}
+              user={user}/>))}
         </table>
         </C.Container>
     </div>

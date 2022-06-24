@@ -43,3 +43,36 @@ export const AddButton=styled(DeleteButton)`
 export const UpdateButton=styled(DeleteButton)`
         background-color:blueviolet;
 `
+export const ModalContainer=styled.div`
+        position: absolute;
+        top:0;left:0;
+        width:100%;
+        height: 100%;
+        background-color:rgba(0,0,0,0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+            position: absolute;
+            right: 3rem;top:2rem;
+            font-size: 5rem;
+            font-weight: 590;
+            cursor: pointer;
+        }
+        div{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            background-color: #eee;
+        }
+        button{
+            margin: 1rem;
+            width: 26rem;
+            padding: 1rem ;
+            background-color: blueviolet;
+            color:#fff;
+            font-size: 1.5rem;
+            cursor:pç+ointer;
+        }
+`;
